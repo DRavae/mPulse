@@ -7,8 +7,57 @@ const _memberships = [];
 
 
 //Messenger Under-the-Hood
+//Base mPulse ID Profile function.
+let createMPulseID = (nickname, pass) => {
+    let mPulseID = {
+        _nickname: nickname,
+        _pass: pass,
+        _age: undefined,
+        _email: undefined,
+        _walletID: undefined,
+        _isOnline: false,
+        _memberships:[],
+
+        addMembership: (membership) => {this._memberships[this._memberships.length] = membership;},
+        
+        get wallet() {return this._walletID;},
+    
+        get mPulseID() {return this._nickname;},
+    
+        set mPulseAge(num) {this._age = num;},
+    
+        set mPulseEmail(address) {this._email = address;},
+    
+        set changePass(newPass) {this._pass = newPass;},
+    
+        set wallet(newWallet) {this._walletID = newWallet;}
+    };
+    
+    let index = mPulseID;
+    accountIndex.push(index);
+    return mPulseID;
+}
+
+
+/*
+Just a space to break up the two mPulse properties.
+*/
+
+
+//Messenger Profile Function.
+let createMessengerProfile = () => {
+    let messengerProfile = {
+        mID: id,
+        mPass: pass,
+        mIsOnline: isOnline,
+
+        changePassword: (mPassword) => {this.mPass = mPassword;}
+    };
+}
+
+
 //Base message function.
-let createMessage = function (sendID, receiveID, data) {
+let createMessage = (sendID, receiveID, data) => {
     //Date and Time stamp function.
     let timestamp = function () {
         let today =  new Date();
@@ -34,8 +83,8 @@ let createMessage = function (sendID, receiveID, data) {
     return message;
 }
 
-
-let findConversation = function (person1, person2) {
+//Locate and create thread of conversation.
+let findConversation = (person1, person2) => {
     let convo = new Array();
 
 
@@ -50,54 +99,6 @@ let findConversation = function (person1, person2) {
 
 
     return convo;
-}
-
-
-/*
-Just a space to break up the two mPulse properties.
-*/
-
-
-//Base mPulse ID Profile function.
-let createMPulseID = function (nickname, pass){
-    let mPulseID = {
-        _nickname: nickname,
-        _pass: pass,
-        _age: undefined,
-        _email: undefined,
-        _walletID: undefined,
-        _isOnline: false,
-        _memberships:[],
-
-        addMembership: function (membership) {this._memberships[this._memberships.length] = membership;},
-        get wallet() {
-            return this._walletID;
-        },
-    
-        get mPulseID() {
-            return this._nickname;
-        },
-    
-        set mPulseAge(num) {
-            this._age = num;
-        },
-    
-        set mPulseEmail(address) {
-            this._email = address;
-        },
-    
-        set changePass(newPass) {
-            this._pass = newPass;
-        },
-    
-        set wallet(newWallet) {
-            this._walletID = newWallet;
-        }
-    };
-    
-    let index = mPulseID;
-    accountIndex.push(index);
-    return mPulseID;
 }
 
 

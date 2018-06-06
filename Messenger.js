@@ -32,10 +32,25 @@ let createMPulseID = (nickname, pass) => {
     
         set wallet(newWallet) {this._walletID = newWallet;}
     };
+
     
+    let createMessengerProfile = () => {
+        const mName = this._nickname;
+        const mPW = this._pass;
+        const online = this._isOnline;
+        
+        let messengerProfile = {
+            mID: mName,
+            mPass: mPW,
+            mIsOnline: online,
+
+            changePassword: (mPassword) => {this.mPass = mPassword;}
+        };
+        
+        return messengerProfile;
+    }
     
     //NEED TO ADD A PRIVACY FEATURE HERE
-   
     
     let index = mPulseID;
     accountIndex.push(index);

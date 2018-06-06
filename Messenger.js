@@ -2,24 +2,7 @@
 
 
 //Messenger Under-the-Hood
-
-
-
-//Base message class.
-
-/*
-class Message {
-    constructor(sendID, receiveID, data) {
-        this._send = sendID;
-        this._receive = receiveID;
-        this._data = data;
-        this._timestamp = timestamp();
-           
-        messageThread.push(this);
-    }
-}
-*/
-
+//Base message function.
 let createMessage = function (sendID, receiveID, data) {
     //Date and Time stamp function.
     let timestamp = function () {
@@ -42,6 +25,8 @@ let createMessage = function (sendID, receiveID, data) {
 
     let mIndex = message;
     messageThread.push(mIndex);
+
+    return message;
 }
 
 
@@ -58,19 +43,13 @@ let findConversation = function (person1, person2) {
         }
     }
 
-    
+
     return convo;
 }
 
 
 /*
-
-
-
 Just a space to break up the two mPulse properties.
-
-
-
 */
 
 
@@ -80,9 +59,7 @@ const messageThread = [];
 const _memberships = [];
 
 
-//Base mPulse ID Profile class.
-
-
+//Base mPulse ID Profile function.
 let createMPulseID = function (nickname, pass){
     let mPulseID = {
         _nickname: nickname,
@@ -94,56 +71,35 @@ let createMPulseID = function (nickname, pass){
         _memberships:[],
 
         addMembership: function (membership) {this._memberships[this._memberships.length] = membership;},
+        get wallet() {
+            return this._walletID;
+        },
+    
+        get mPulseID() {
+            return this._nickname;
+        },
+    
+        set mPulseAge(num) {
+            this._age = num;
+        },
+    
+        set mPulseEmail(address) {
+            this._email = address;
+        },
+    
+        set changePass(newPass) {
+            this._pass = newPass;
+        },
+    
+        set wallet(newWallet) {
+            this._walletID = newWallet;
+        }
     };
     
     let index = mPulseID;
     accountIndex.push(index);
     return mPulseID;
 }
-
-
-/*
-class MPulseID extends Message {
-    constructor(nickname, pass)  {
-        super();
-        this._nickname = nickname;
-        this._pass = pass;
-        this._age = undefined;
-        this._email = undefined;
-        this._walletID = undefined;
-        this._isOnline = false;
-        this._memberships = [];
-        
-        let myProfile = this;
-        accountIndex.push(myProfile);
-        //accountIndex.push(this.nickname);
-    }
-
-    get wallet() {
-        return this._walletID;
-    }
-
-    get mPulseID() {
-        return this._nickname;
-    }
-
-    set mPulseAge(num) {
-        this._age = num;
-    }
-
-    set mPulseEmail(address) {
-        this._email = address;
-    }
-
-    set changePass(newPass) {
-        this._pass = newPass;
-    }
-
-    set wallet(newWallet) {
-        this._walletID = newWallet;
-    }
-}
-*/
 
 
 const AmunRa = createMPulseID("D'Amun~Ra", 'R3d_Crus@de');
@@ -156,8 +112,8 @@ Josh._age = 25;
 Josh._email = 'joshuakhagins@gmail.com';
 
 
-let message1 = createMessage(AmunRa, Josh,'Hello! This is a test message!');
-let message2 = createMessage(Josh, AmunRa,'This is awesome. I can\'t wait to see the finihed product!');
+createMessage(AmunRa, Josh,'Hello! This is a test message!');
+createMessage(Josh, AmunRa,'This is awesome. I can\'t wait to see the finihed product!');
 
 
 console.log(findConversation(AmunRa, Josh));

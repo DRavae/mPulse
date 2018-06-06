@@ -1,5 +1,10 @@
 //mPulse Messenger Application
 
+//Basic indexes for accounts and messages.
+const accountIndex = [];
+const messageThread = [];
+const _memberships = [];
+
 
 //Messenger Under-the-Hood
 //Base message function.
@@ -51,12 +56,6 @@ let findConversation = function (person1, person2) {
 /*
 Just a space to break up the two mPulse properties.
 */
-
-
-//Basic indexes for accounts and messages.
-const accountIndex = [];
-const messageThread = [];
-const _memberships = [];
 
 
 //Base mPulse ID Profile function.

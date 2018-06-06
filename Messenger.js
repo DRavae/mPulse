@@ -33,6 +33,10 @@ let createMPulseID = (nickname, pass) => {
         set wallet(newWallet) {this._walletID = newWallet;}
     };
     
+    
+    //NEED TO ADD A PRIVACY FEATURE HERE
+   
+    
     let index = mPulseID;
     accountIndex.push(index);
     return mPulseID;
